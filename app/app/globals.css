@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens. Every colour pair used in the UI is listed in
+   tools/palette_check.py and verified against WCAG 2.2 AA.
+   Tailwind v4 turns each --color-* token into utilities
+   (bg-page, text-ink, border-line, bg-brand, ...), so components never
+   hard-code colours.
+   ------------------------------------------------------------------ */
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* surfaces */
+  --color-page: #f1f5f9;
+  --color-surface: #ffffff;
+  --color-line: #cbd5e1;      /* decorative borders (cards, dividers) */
+  --color-control: #64748b;   /* borders of inputs and buttons (>= 3:1) */
+  --color-nav: #0f172a;
+  --color-nav-2: #1e293b;
+
+  /* text on light surfaces */
+  --color-ink: #0f172a;       /* headings, values */
+  --color-ink-2: #334155;     /* labels, table headers */
+  --color-ink-3: #475569;     /* secondary text, placeholders */
+
+  /* text on dark surfaces */
+  --color-on-dark: #f8fafc;
+  --color-on-dark-2: #cbd5e1;
+
+  /* brand (blue accent) */
+  --color-brand: #1d4ed8;
+  --color-brand-hover: #1e40af;
+  --color-brand-soft: #eff6ff;
+  --color-ring: #2563eb;
+  --color-ring-dark: #93c5fd;
+
+  /* status pairs: text / background */
+  --color-ok-fg: #14532d;     --color-ok-bg: #dcfce7;
+  --color-warn-fg: #78350f;   --color-warn-bg: #fef3c7;
+  --color-bad-fg: #7f1d1d;    --color-bad-bg: #fee2e2;
+  --color-info-fg: #1e3a8a;   --color-info-bg: #dbeafe;
+  --color-neutral-fg: #1e293b; --color-neutral-bg: #e2e8f0;
+  --color-danger: #b91c1c;    --color-danger-hover: #991b1b;
+}
+
+/* The interface is light-on-dark-header by design. Declaring color-scheme: light and
+   removing the old prefers-color-scheme: dark override stops the OS dark mode from
+   turning the page black and the inherited text near-white. */
+html { color-scheme: light; }
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* one consistent keyboard focus indicator */
+:focus-visible { outline: 2px solid var(--color-ring); outline-offset: 2px; }
+.on-dark :focus-visible { outline-color: var(--color-ring-dark); }
+
+/* native <dialog> backdrop */
+dialog::backdrop { background: rgb(15 23 42 / 0.65); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
