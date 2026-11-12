@@ -1,4 +1,4 @@
-# Ad Attribution & Funnel Analytics Engine: integrated project (Member 1 + Member 2)
+# Ad Attribution & Funnel Analytics Engine:  (Prachi-(PES1UG24CS325_Member 1) + Shristi Saha(PES1UG24CS903_Member 2))
 
 PostgreSQL 16 + MongoDB + Next.js 16. **Start with `docs/INTEGRATION.md`** (architecture, Mac setup, test results, limitations).
 
